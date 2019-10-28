@@ -59,7 +59,7 @@ void Preprocessing::Normalization(float *data, int rows, int columns) {
 
     MPI_Gather(data_part, part_columns, column_wise_array_type2, data,
             part_columns, column_wise_array_type, ROOT, MPI_COMM_WORLD);
-
+    free(data_part);
     MPI_Barrier(MPI_COMM_WORLD);
     if (rank == ROOT) {
         printf("Czas obliczen normalizacja: %f\n", MPI_Wtime() - startTime);
@@ -126,7 +126,7 @@ void Preprocessing::Standarization(float *data, int rows, int columns) {
 
     MPI_Gather(data_part, part_columns, column_wise_array_type2, data, part_columns, column_wise_array_type,
                ROOT, MPI_COMM_WORLD);
-
+    free(data_part);
     MPI_Barrier(MPI_COMM_WORLD);
     if (rank == ROOT) {
         printf("Czas obliczen standaryzacja: %f\n", MPI_Wtime() - startTime);

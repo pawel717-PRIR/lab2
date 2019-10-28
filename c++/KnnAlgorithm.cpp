@@ -61,11 +61,10 @@ float KnnAlgorithm::predict() {
     }
     MPI_Reduce(&accurate_predictions, &total_accurate_predictions,
             1, MPI_INT, MPI_SUM, ROOT, MPI_COMM_WORLD);
-
+    free(part_test_data);
     MPI_Barrier(MPI_COMM_WORLD);
     if (rank == ROOT) {
         printf("Czas obliczen knn: %f\n", MPI_Wtime() - startTime);
     }
-
     return (total_accurate_predictions / float(test_rows)) * 100;
 }
