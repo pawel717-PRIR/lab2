@@ -27,9 +27,9 @@ int main() {
     if (rank == ROOT) {
         LoadCSV().myLoad("../dataset/mnist_train.csv", ourData.data, ourData.rows, ourData.columns);
     }
-	//preprocessing.Normalization(ourData.data, ourData.rows, ourData.columns);
-    preprocessing.Standarization(ourData.data, ourData.rows, ourData.columns);
-    knn.fit(ourData, 75);
+	preprocessing.Normalization(ourData.data, ourData.rows, ourData.columns);
+    //preprocessing.Standarization(ourData.data, ourData.rows, ourData.columns);
+    knn.fit(&ourData, 75);
     float accuracy = knn.predict();
     if (rank == ROOT) {
         printf("Accuracy knn: %f\n", accuracy);

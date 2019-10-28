@@ -8,7 +8,7 @@ class KnnAlgorithm {
     public:
         KnnAlgorithm();
         virtual ~KnnAlgorithm();
-        void fit(Data data, int percent);
+        void fit(Data * data, int percent);
         float predict();
     private:
         float *train_data;

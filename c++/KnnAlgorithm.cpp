@@ -8,12 +8,12 @@ KnnAlgorithm::~KnnAlgorithm() {
     //dtor
 }
 
-void KnnAlgorithm::fit(Data data, int percent) {
-    this->train_rows = (data.rows * percent) / 100;
-    this->columns = data.columns;
-    this->test_rows = data.rows - train_rows;
-    this->train_data = data.data;
-    this->test_data = data.data + (columns * train_rows);
+void KnnAlgorithm::fit(Data * data, int percent) {
+    this->train_rows = (data->rows * percent) / 100;
+    this->columns = data->columns;
+    this->test_rows = data->rows - train_rows;
+    this->train_data = data->data;
+    this->test_data = data->data + (columns * train_rows);
 }
 
 float KnnAlgorithm::predict() {
