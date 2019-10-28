@@ -6,6 +6,7 @@ Data::Data() {
 
 
 Data::~Data() {
+    free(this->data );
 }
 
 void Data::print_data() {
