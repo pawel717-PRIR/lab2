@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "default_formatter": {
+	  "format": "%(asctime)s | %(process)d | %(levelname)s | %(module)s %(funcName)s | %(message)s"
+    },
+	"console_default_formatter": {
+		"format": "%(process)d | %(levelname)s | %(module)s %(funcName)s | %(message)s"
+	}
+  },
+
+  "handlers": {
+    "console_handler": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "console_default_formatter",
+      "stream": "ext://sys.stdout"
+    },
+    "file_handler": {
+      "class": "logging.FileHandler",
+      "level": "DEBUG",
+      "formatter": "default_formatter",
+      "filename": "logs/app.log",
+      "encoding": "utf8"
+    },
+	"metrics_file_handler": {
+      "class": "logging.FileHandler",
+      "level": "INFO",
+      "formatter": "default_formatter",
+      "filename": "logs/metrics.log",
+      "encoding": "utf8"
+    }
+  },
+
+  "loggers": {
+    "metrics": {
+      "level": "DEBUG",
+      "handlers": ["console_handler", "file_handler", "metrics_file_handler"]
+    }
+  },
+
+  "root": {
+    "level": "DEBUG",
+    "handlers": ["console_handler", "file_handler"]
+  }
+}

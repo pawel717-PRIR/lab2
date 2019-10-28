@@ -1,0 +1,4 @@
+# exclude dataset files - too large for github
+
+mnist_test.csv
+mnist_train.csv
